@@ -2,8 +2,12 @@ import pygame
 import random
 
 # Константы отвечающие за ширину и высоту дисплея
-WIDTH = 360
-HEIGHT = 480
+WIDTH_DISPLAY = 360
+HEIGHT_DISPLAY = 480
+
+# Константы отвечающие за ширину и высоту игрока
+WIDTH_PLAYER = 40
+HEIGHT_PLAYER = 40
 
 # Константы отвечающее за цвета
 RED = 255, 0, 0
@@ -16,7 +20,7 @@ BLACK = 0, 0, 0
 class Player(pygame.sprite.Sprite):
   def __init__(self, pygame.sprite.Sprite):
     pygame.sprite.Sprite.__init__(self)
-    self.image = pygame.Surface((40, 40))
+    self.image = pygame.Surface((WIDTH_PLAYER, HEIGHT_PLAYER))
     self.fill(GREEN)
     self.rect = self.image.get_rect()
     self.rect.center = ((WIDTH / 2, HEIGHT / 2))
@@ -28,7 +32,7 @@ class Player(pygame.sprite.Sprite):
 
 # Инициализация дисплея и спрайтов
 pygame.init()
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
+screen = pygame.display.set_mode((WIDTH_DISPLAY, HEIGHT_DISPLAY))
 pygame.display.set_caption("Вот что я пока способен делать в pygame")
 sprites = pygame.sprite.Group()
 player = Player()
