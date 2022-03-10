@@ -18,25 +18,25 @@ BLACK = 0, 0, 0
 
 # Создание класса игрока
 class Player(pygame.sprite.Sprite):
-  def __init__(self, pygame.sprite.Sprite):
+  def __init__(self):
     pygame.sprite.Sprite.__init__(self)
     self.image = pygame.Surface((WIDTH_PLAYER, HEIGHT_PLAYER))
-    self.fill(GREEN)
+    self.image.fill(GREEN)
     self.rect = self.image.get_rect()
-    self.rect.center = ((WIDTH / 2, HEIGHT / 2))
+    self.rect.center = ((WIDTH_DISPLAY / 2, HEIGHT_DISPLAY / 2))
  
  def update(self):
    self.rect.x += 1
-   if self.rect.x > WIDTH:
+   if self.rect.x > WIDTH_DISPLAY:
      self.rect.x = 0
 
 # Инициализация дисплея и спрайтов
 pygame.init()
 screen = pygame.display.set_mode((WIDTH_DISPLAY, HEIGHT_DISPLAY))
-pygame.display.set_caption("Вот что я пока способен делать в pygame")
+pygame.display.set_caption("Вот что я пока способен сделать в pygame")
 sprites = pygame.sprite.Group()
 player = Player()
-sprites.add(display)
+sprites.add(player)
 
 # Игровой цикл
 active = True
@@ -48,7 +48,8 @@ while active:
   
   # Отрисовка экрана и спрайтов
   screen.fill(BLACK)
-  sprites.update(screen)
+  sprites.draw(screen)
+  sprites.update()
   pygame.display.flip()
   
 pygame.quit()
